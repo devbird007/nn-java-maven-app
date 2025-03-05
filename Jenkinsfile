@@ -25,51 +25,15 @@ pipeline {
                         sh 'docker build -t mannyops/pipeline-demo-app:1.0 .'
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                         sh 'docker push mannyops/pipeline-demo-app:1.0'
+                    }
                 }
             }
         }
-
-
         stage("deploy") {
             steps {
                 script {
                     echo "deploying the application..."
                 }
-            }
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-pipeline {
-    agent any
-
-    stages {
-        stage("build") {
-            steps {
-                echo 'building the application...'
-                
-            }
-        }
-
-        stage("test") {
-            steps {
-                echo 'testing the application...'
-            }
-        }
-
-        stage("deploy") {
-            steps {
-                echo 'deploying the application...'
             }
         }
     }
