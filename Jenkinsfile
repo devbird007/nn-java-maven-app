@@ -27,6 +27,11 @@ pipeline {
             }
         }
         stage('build jar') {
+            when {
+                expression {
+                    BRANCH_NAME == 'master'
+                }
+            }
             steps {
                 script {
                     gv.buildJar()
