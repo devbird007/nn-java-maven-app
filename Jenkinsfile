@@ -11,21 +11,34 @@ pipeline {
         maven 'maven-3.9.9'
     }
     stages {
-        stage("init") {
+        stage('init') {
             steps {
                 script {
                     gv = load "script.groovy"
                 }
             }
         }
-        stage("build jar") {
+        stage('test') {
+            steps {
+                script {
+                    echo "Testing the application..."
+                    echo "Executing pipeline for branch $BRANCH_NAME"
+                }
+            }
+        }
+        stage('build jar') {
             steps {
                 script {
                     gv.buildJar()
                 }
             }
         }
-        stage("build image") {
+        stage('build image') {
+            when {
+                expression {
+                    BRANCH_NAME == 'master'
+                }
+            }
             steps {
                 script {
                     gv.buildImage()
@@ -33,6 +46,11 @@ pipeline {
             }
         }
         stage("deploy") {
+            when {
+                expression {
+                    BRANCH_NAME == 'master'
+                }
+            }
             steps {
                 script {
                     gv.deployImage()
