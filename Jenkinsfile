@@ -37,7 +37,7 @@ pipeline {
         stage('build image') {
             steps {
                 script {
-                    buildImage()
+                    buildImage 'mannyops/pipeline-demo-app:groovy2.0'
                 }
             }
         }
