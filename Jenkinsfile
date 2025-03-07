@@ -1,3 +1,4 @@
+@Library('my-nn-jenkins-shared-library')
 def gv
 
 pipeline {
@@ -34,7 +35,7 @@ pipeline {
             }
             steps {
                 script {
-                    gv.buildJar()
+                    buildJar()
                 }
             }
         }
@@ -46,7 +47,7 @@ pipeline {
             }
             steps {
                 script {
-                    gv.buildImage()
+                    buildImage()
                 }
             }
         }
