@@ -34,10 +34,12 @@ pipeline {
                 }
             }
         }
-        stage('build image') {
+        stage('build and push image') {
             steps {
                 script {
-                    buildImage 'mannyops/pipeline-demo-app:groovy3.0'
+                    buildImage 'mannyops/pipeline-demo-app:groovy4.0'
+                    dockerLogin()
+                    dockerPush 'mannyops/pipeline-demo-app:groovy4.0'
                 }
             }
         }
