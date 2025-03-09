@@ -22,6 +22,7 @@ pipeline {
             steps {
                 script {
                     echo "Testing the application..."
+                    echo "Testing the integration with jenkins"
                     echo "Executing pipeline for branch $BRANCH_NAME"
                 }
             }
