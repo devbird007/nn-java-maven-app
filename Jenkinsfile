@@ -1,6 +1,6 @@
 library identifier: 'my-nn-jenkins-shared-library@main', retriever: modernSCM(
     [$class: 'GitSCMSource',
-    remote: 'https://github.com/devbird007/my-nn-jenkins-shared-library.git'
+    remote: 'https://github.com/devbird007/my-nn-jenkins-shared-library.git',
     credentialsId: 'github-credentials'
     ]
 )
